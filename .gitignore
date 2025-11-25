@@ -2,3 +2,5 @@ __pycache__
 **/__pycache__
 .github
 .pytest_cache
+# Snyk Security Extension - AI Rules (auto-generated)
+.github/instructions/snyk_rules.instructions.md
