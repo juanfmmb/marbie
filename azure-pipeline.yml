@@ -30,6 +30,10 @@ stages:
       vmImage: ubuntu-latest
     steps:
     - script: pip install -r requirements.txt && pytest
+      env:
+        API_KEY: $(api-key)
+        JWT_SECRET: $(jwt-secret)
+        JWT_ALGORITHM: $(jwt-algorithm)
 
   - job: sast
     pool:

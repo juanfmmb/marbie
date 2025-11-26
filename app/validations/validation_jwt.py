@@ -18,7 +18,5 @@ def validation_jwt(X_JWT_KWY: str = Header(alias="X-JWT-KWY")) -> str:
     try:
         payload = jwt.decode(jwt_token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
         return payload["sub"]
-    except jwt.ExpiredSignatureError:
-        raise HTTPException(status_code=401, detail="Token vencido")
     except Exception:
         raise HTTPException(status_code=401, detail="Token invalido")
