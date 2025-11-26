@@ -14,7 +14,7 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
-    - script: pip install requirements.txt
+    - script: pip install -r requirements.txt
     - task: Snyk.snyk-security-scan.custom-build-release-task.SnykSecurityScan@1
       displayName: 'Snyk scan for open source vulnerabilities'
       inputs:
@@ -29,7 +29,7 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
-    - script: pip install requirements.txt && pytest
+    - script: pip install -r requirements.txt && pytest
 
   - job: sast
     pool:
@@ -42,7 +42,7 @@ stages:
         organization: 'jfrb-org'
         scannerMode: cli
         configMode: manual
-        cliProjectKey: marbie
+        cliProjectKey: jfrb-org_marbie
         cliProjectName: marbie
     - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@3
       displayName: 'Run Code Analysis'
